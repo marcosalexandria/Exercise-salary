@@ -56,8 +56,10 @@ public class Program {
 			Date dateContract = sdf.parse(dateString);
 			System.out.print("Value of Hour: ");
 			double valueHour = sc.nextDouble();
-			System.out.print("Total of Hours");
+			System.out.print("Total of Hours: ");
 			int totalHours = sc.nextInt();
+			System.out.print("----------");
+			System.out.println();
 			HourContract contract = new HourContract(dateContract, valueHour, totalHours);
 			contracts.add(contract);
 		}
