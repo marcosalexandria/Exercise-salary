@@ -1,6 +1,7 @@
 package entities;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import entities.enums.WorkerLevel;
@@ -76,6 +77,28 @@ public class Worker {
 			System.out.println(contract.getValuePerHour());
 			System.out.println(contract.getHour());
 		}
+	}
+	
+	public double income(int year, int month) {
+		double sum = baseSalary;
+		Calendar cal = Calendar.getInstance();
+		for (HourContract c : contracts) {
+			cal.setTime(c.getDate());
+			int c_year = cal.get(Calendar.YEAR);
+			int c_month = 1 + cal.get(Calendar.MONTH);
+			if (year == c_year && month == c_month) {
+				sum += c.totalValue();
+			}
+		}
+		return sum;
+	}
+	
+	public void addContract(HourContract contract) {
+		this.contracts.add(contract);
+	}
+	
+	public void removeContract(HourContract contract) {
+		this.contracts.remove(contract);
 	}
 	
 }
